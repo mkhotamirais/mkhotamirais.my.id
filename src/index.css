@@ -1,69 +1,144 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+html {
+  @apply scroll-smooth;
 }
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  @apply mt-16 relative min-h-screen leading-relaxed;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+header {
+  @apply z-50 border-b-2 flex items-center justify-between px-3 md:px-16 h-16 fixed top-0 left-0 right-0 backdrop-blur-md;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+header .nav {
+  @apply md:flex z-50 absolute top-16 left-0 right-0 border md:border-none md:static bg-white md:bg-transparent;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+header .logo {
+  @apply uppercase text-2xl font-semibold;
+}
+
+header .nav .nav-list a {
+  @apply h-12 md:h-16 flex items-center justify-center px-4 hover:text-slate-400 transition duration-200 capitalize;
+}
+
+header .nav .nav-list a.active {
+  @apply text-slate-400;
+}
+
+.title-aside {
+  @apply z-40 bg-white text-2xl font-semibold mb-2 fixed w-52 ml-16 pt-5;
+}
+
+aside {
+  @apply sticky top-[7.5rem] w-56 float-left bg-white ml-16 mt-14 overflow-y-scroll;
+  height: calc(100vh - 8rem);
+}
+
+aside:hover::-webkit-scrollbar-thumb,
+main .daftar-isi:hover::-webkit-scrollbar-thumb {
+  display: block;
+}
+
+aside::-webkit-scrollbar,
+main .daftar-isi::-webkit-scrollbar {
+  width: 5px;
+}
+
+aside::-webkit-scrollbar-thumb,
+main .daftar-isi::-webkit-scrollbar-thumb {
+  @apply bg-gray-200 rounded hidden;
+}
+
+aside > a {
+  @apply text-lg font-semibold mb-1 capitalize;
+}
+
+aside a {
+  @apply block leading-loose;
+}
+
+aside .aside-page a {
+  @apply pl-2 flex items-center gap-1;
+}
+
+aside .aside-page a.active {
+  @apply bg-slate-600 text-white rounded;
+}
+
+main {
+  @apply min-h-screen ml-3 md:ml-72 mr-16 pl-5 pt-5;
+}
+
+main section,
+main section .section#about-me,
+main section .section#hello-world {
+  min-height: calc(100vh - 8rem);
+}
+
+main section {
+  padding-bottom: 3rem;
+}
+
+main section h1.title-page {
+  @apply text-3xl mb-3 font-semibold flex items-center gap-1;
+}
+
+main section .daftar-isi {
+  @apply border-b-8 border-transparent outline outline-2 outline-slate-300 sticky top-16 h-28 mb-4 rounded px-4 z-50 bg-white overflow-y-scroll;
+}
+
+main section .daftar-isi .daftar-isi-title {
+  @apply font-semibold text-lg;
+}
+
+main section .daftar-isi a {
+  @apply block underline hover:text-blue-600;
+}
+
+main section .section:not(#about-me) {
+  @apply scroll-mt-48;
+}
+
+main section .section {
+  @apply min-h-fit;
+}
+
+main section .section a {
+  @apply underline;
+}
+
+main section .card-container {
+  @apply grid grid-cols-2 lg:grid-cols-3 gap-2;
+}
+
+main section .card-container .card {
+  @apply border rounded-md p-3 flex flex-col;
+}
+
+main section .card-container .card-title {
+  @apply text-2xl font-semibold mt-3 mb-1;
+}
+
+main section .card-container .card-desc {
+  @apply flex-grow;
+}
+
+main section .card-container .card-footer {
+  @apply justify-self-end;
+}
+
+main section .card-container .card-image {
+  @apply block h-40 border overflow-hidden duration-200;
+}
+
+main section .card-container .card-image img {
+  @apply duration-300 hover:scale-125;
+}
+
+footer {
+  @apply min-h-[4rem] border text-center absolute left-0 right-0 -bottom-16;
 }
